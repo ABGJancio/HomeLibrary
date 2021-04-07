@@ -18,7 +18,7 @@ class Books:
         return []
 
     def create(self, data):
-        data.pop('csrf_token')
+#        data.pop('csrf_token')
         self.books.append(data)
         self.save_all()
 
@@ -27,7 +27,7 @@ class Books:
             json.dump(self.books, f)
 
     def update(self, id, data):
-        data.pop('csrf_token')
+#        data.pop('csrf_token')
         book = self.get(id)
         if book:
             index = self.books.index(book)
