@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja pozycji w biblioteczce</title>
+</head>
+
+<body>
+    <h2> Uaktualnij pozycję w biblioteczce: </h2>
+    <form method="POST" action="/api/v1/books/{{ book_id }}/">
+        {{ form.hidden_tag() }}
+        <table>
+            {% for field in form if field.widget.input_type != 'hidden' %}
+                <tr>
+                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                    <td>{{ field }}</td>
+                    <td></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="Wykonaj">
+    </form>
+</body>
+</html>
